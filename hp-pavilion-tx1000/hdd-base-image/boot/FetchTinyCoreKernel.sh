@@ -3,18 +3,7 @@ if [ `id -u` -ne 0 ]; then
 	exit 1
 fi
 
-DownloadTCFile() {
-	echo "Downloading $tcv TinyCore kernel file: $1"
-
-	local scriptDir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-	local baseURL="http://distro.ibiblio.org/tinycorelinux/$tcv.x/x86_64/release/distribution_files"
-	local fullURL="$baseURL/$1"
-
-	if ! wget -O "$scriptDir/$1" "$fullURL"; then
-		echo "Failed to download $fullURL"
-		exit 1
-	fi
-}
+scriptDir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 read -p "TinyCore version to download: " tcv
 
@@ -23,7 +12,20 @@ if [ -z "$tcv" ]; then
 	exit 1:
 fi
 
-DownloadTCFile "corepure64.gz"
-DownloadTCFile "vmlinuz64"
+baseURL="http://distro.ibiblio.org/tinycorelinux/$tcv.x/x86_64/release/distribution_files"
+
+echo "Downloading v$tcv TinyCore kernel file: corepure64.gz"
+
+if ! wget -O "$scriptDir/corepure64.gz" "$baseURL/corepure64.gz"; then
+	echo "Failed to download $baseURL/corepure64.gz"
+	exit 1
+fi
+
+echo "Downloading v$tcv TinyCore kernel file: vmlinuz64"
+
+if ! wget -O "$scriptDir/vmlinuz64" "$baseURL/vmlinuz64"; then
+	echo "Failed to download $baseURL/vmlinuz64"
+	exit 1
+fi
 
 echo "Done."
