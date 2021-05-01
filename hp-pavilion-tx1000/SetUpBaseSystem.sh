@@ -7,20 +7,7 @@ InstallExtForBoot() {
 	fi
 }
 
-echo "This script will set up the base system."
-echo "It is assumed that a minimal TinyCore system"
-echo "exists, with no Xorg server or desktop environment."
-echo "Press Return or Spacebar to continue, or any other"
-echo "key to cancel."
-
-read -rsn1 input
-
-if [ -n "$input" ]; then
-	echo "Exiting"
-	exit 1
-fi
-
-echo "========== OnBoot Extensions =========="
+echo "Installing base system extensions."
 echo
 
 echo "Category: Display and Window System"
