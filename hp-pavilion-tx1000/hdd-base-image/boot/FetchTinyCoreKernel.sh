@@ -10,14 +10,15 @@ DownloadTCFile() {
 	baseURL="http://distro.ibiblio.org/tinycorelinux/$1.x/x86_64/release/distribution_files"
 	fullURL="$baseURL/$2"
 
-	pushd $scriptDir
+	lastDir=`pwd`
+	cd "$scriptDir"
 
 	if ! wget "$fullURL"; then
 		echo "Failed to download $fullURL"
 		exit 1
 	fi
 
-	popd
+	cd "$lastDir"
 }
 
 read -p "TinyCore version to download: " tcv
