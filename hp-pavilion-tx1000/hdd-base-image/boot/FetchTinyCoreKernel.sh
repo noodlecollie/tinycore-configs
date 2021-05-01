@@ -3,7 +3,8 @@ if [ `id -u` -ne 0 ]; then
 	exit 1
 fi
 
-scriptDir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+# I got fed up of trying to evaluate this in a decent way
+scriptDir="/mnt/sda1/boot"
 
 read -p "TinyCore version to download: " tcv
 
