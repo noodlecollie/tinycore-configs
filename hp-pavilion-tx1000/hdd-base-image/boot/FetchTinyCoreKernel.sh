@@ -1,4 +1,4 @@
-if [ "$EUID" -ne 0 ]; then
+if [ `id -u` -ne 0 ]; then
 	echo "This script must be run as root."
 	exit 1
 fi
@@ -10,10 +10,14 @@ DownloadTCFile() {
 	baseURL="http://distro.ibiblio.org/tinycorelinux/$1.x/x86_64/release/distribution_files"
 	fullURL="$baseURL/$2"
 
-	if ! wget "$fullURL" -O "$scriptDir/$2"; then
+	pushd $scriptDir
+
+	if ! wget "$fullURL"; then
 		echo "Failed to download $fullURL"
 		exit 1
 	fi
+
+	popd
 }
 
 read -p "TinyCore version to download: " tcv
