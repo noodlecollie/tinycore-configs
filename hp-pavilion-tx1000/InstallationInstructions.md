@@ -62,13 +62,13 @@ Clone this repo to the live USB's home directory (again, this will reside in RAM
 
 ```
 git clone https://github.com/x6herbius/tinycore-configs.git ~/tinycore-configs
-sudo cp -r ~/tinycore-configs/hp-pavilion-tx1000/hdd-base-image/* /mnt/sda
+sudo cp -r ~/tinycore-configs/hp-pavilion-tx1000/hdd-base-image/* /mnt/sda1/
 ```
 
 Then, fetch the TinyCore kernel files by running:
 
 ```
-/mnt/sda1/FetchTinyCoreKernel.sh
+sudo /mnt/sda1/FetchTinyCoreKernel.sh
 ```
 
 This will ask for the desired TinyCore version (the most current version as time of writing is `12`), and will download the relevant files to the `/mnt/sda1` directory.

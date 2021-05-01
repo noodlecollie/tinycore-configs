@@ -2,7 +2,7 @@ DownloadTCFile() {
 	echo "Downloading v$1 TinyCore kernel file: $2"
 
 	scriptDir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-	baseURL="http://distro.ibiblio.org/tinycorelinux/$1.xx86_64/release/distribution_files"
+	baseURL="http://distro.ibiblio.org/tinycorelinux/$1.x/x86_64/release/distribution_files"
 	fullURL="$baseURL/$2"
 
 	if ! wget "$fullURL" "$scriptDir"; then
