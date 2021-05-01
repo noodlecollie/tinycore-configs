@@ -85,4 +85,43 @@ After all is done, run `sudo reboot` and remove the live USB. TinyCore should no
 
 ## 3. Setting Up a Base System
 
-TODO
+Once booted from the hard disk, install Git as an on-boot extension:
+
+```
+tce-load -wi git
+```
+
+If you would like SSH support, you can also install OpenSSH
+
+```
+tce-load -wi openssh
+
+# Start the SSH agent:
+eval $(ssh-agent)
+
+# If required, limit permissions on the SSH directory and files:
+chmod 700 ~/.ssh
+chmod 644 ~/.ssh/public_key_file
+chmod 600 ~/.ssj/private_key_file
+
+# Load a private key:
+ssh-add ~/.ssh/private_key_file
+```
+
+Clone this repo into the home directory:
+
+```
+# HTTPS:
+git clone https://github.com/x6herbius/tinycore-configs.git ~/tinycore-configs
+
+# SSH:
+git clone git@github.com:x6herbius/tinycore-configs.git ~/tinycore-configs
+```
+
+Then run `SetUpBaseSystem.sh`. This will set up a basic GUI-based system using X and Openbox, and will install some commonly-used utilities like a terminal.
+
+```
+~/tinycore-configs/hp-pavilion-tx1000/SetUpBaseSystem.sh
+```
+
+After this has completed, restart using `sudo reboot`. After rebooting, The Openbox desktop should load.

@@ -25,11 +25,12 @@ echo
 
 echo "Category: Display and Window System"
 InstallExtForBoot Xorg-7.7
-InstallExtForBoot graphics-5.10.3-tinycore
+InstallExtForBoot graphics-5.10.3-tinycore64
 
-echo "Category: Window Manager"
+echo "Category: Openbox Window Manager"
 InstallExtForBoot openbox
-InstallExtForBoot tint2
+InstallExtForBoot openbox-config
+InstallExtForBoot obconf
 
 echo "Category: Terminals"
 InstallExtForBoot aterm
