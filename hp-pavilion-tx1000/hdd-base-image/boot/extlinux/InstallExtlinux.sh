@@ -20,9 +20,9 @@ if ! extlinux --install "$scriptDir"; then
 	exit 1
 fi
 
-echo "Backing up SDA's Master Boot Record to $scriptDir/mbr-orig/sda"
+echo "Backing up SDA's Master Boot Record to $scriptDir/mbr-orig.sda"
 
-if ! dd "if=/dev/sda" bs=1 count=440 "of=$scriptDir/mbr-orig/sda"; then
+if ! dd "if=/dev/sda" bs=1 count=440 "of=$scriptDir/mbr-orig.sda"; then
 	echo "Failed to back up MBR"
 	exit 1
 fi
