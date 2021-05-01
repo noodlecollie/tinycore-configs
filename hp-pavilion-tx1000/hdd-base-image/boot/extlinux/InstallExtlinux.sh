@@ -43,7 +43,7 @@ fi
 
 echo "Copying Extlinux libutil.c32 to bootloader directory"
 
-if ! cp /usr/local/share/syslinux/libutil.c32.c32 /mnt/sda1/boot/extlinux; then
+if ! cp /usr/local/share/syslinux/libutil.c32 /mnt/sda1/boot/extlinux; then
 	echo "Failed to copy libutil.c32"
 	exit 1
 fi
